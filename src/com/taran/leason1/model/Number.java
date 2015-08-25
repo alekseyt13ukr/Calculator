@@ -6,11 +6,16 @@ import javax.script.ScriptException;
 
 public class Number {
 
-    public String countPhrase(String mathString) throws ScriptException {
+    public String countPhrase(String mathString) {
         ScriptEngineManager mgr = new ScriptEngineManager();
         ScriptEngine engine = mgr.getEngineByName("JavaScript");
         String result = mathString;
-        String resultNumber =  engine.eval(result).toString();
+        String resultNumber = null;
+        try {
+            resultNumber = engine.eval(result).toString();
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
         return resultNumber;
     }
 }
