@@ -1,10 +1,10 @@
-package com.taran.leason1.model;
+package com.taran.lesson1.model;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-public class Number {
+public class CountNumber {
 
     public String countPhrase(String mathString) {
         ScriptEngineManager mgr = new ScriptEngineManager();
@@ -14,7 +14,7 @@ public class Number {
         try {
             resultNumber = engine.eval(result).toString();
         } catch (ScriptException e) {
-            e.printStackTrace();
+            resultNumber = "Incorrect phrase for counting";
         }
         return resultNumber;
     }
