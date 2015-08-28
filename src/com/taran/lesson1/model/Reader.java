@@ -1,4 +1,4 @@
-package com.taran.leason1.model;
+package com.taran.lesson1.model;
 
 import java.util.Scanner;
 
