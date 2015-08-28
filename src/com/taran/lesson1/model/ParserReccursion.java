@@ -11,6 +11,8 @@ public class ParserReccursion {
 
     private String mathString;
 
+    private String currentPhrase = "";
+
     public ParserReccursion(String mathString) {
         this.mathString = mathString;
     }
@@ -18,8 +20,6 @@ public class ParserReccursion {
     public void parsString() {
 
         addBrackets();
-
-        String currentPhrase = "";
 
         CountNumber countNumber = new CountNumber();
         SearchOpenBrackets searchOpenBrackets = new SearchOpenBrackets(mathString);
@@ -54,12 +54,7 @@ public class ParserReccursion {
         //recursion
         mathStringInChar = mathString.toCharArray();
 
-        Pattern pattern = Pattern.compile("^\\-?\\d+$");
-        Matcher matcher = pattern.matcher(mathString);
-        if (matcher.find()) {
-            result = mathString;
-            return;
-        }
+        checkFinishNumber();
 
         for (int k = 0; k < mathStringInChar.length; k++) {
             if (mathStringInChar[k] == '+' || mathStringInChar[k] == '-') {
@@ -70,6 +65,16 @@ public class ParserReccursion {
         if (result == null) {
             result = "something wrong";
         }
+    }
+
+    public void checkFinishNumber() {
+        Pattern patternFinishNumber = Pattern.compile("^\\-?\\d+$");
+        Matcher matcherFinishNumber = patternFinishNumber.matcher(mathString);
+        if (matcherFinishNumber.find()) {
+            result = mathString;
+            return;
+        }
+
     }
 
     public void checkNumberBrackets(boolean correctFlag) {
