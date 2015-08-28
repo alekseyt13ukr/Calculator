@@ -19,6 +19,8 @@ public class ParserReccursion {
 
     public void parsString() {
 
+        new ViewMathString(mathString).changeViewString();
+
         addBrackets();
 
         CountNumber countNumber = new CountNumber();
